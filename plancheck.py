@@ -13,18 +13,12 @@ from pprint import pprint
 import pdb
 
 # Project Modules
-import checks11 as checks
-#import data09_local as data
-
-# testing new data.11, data.10 is functional
-import data11 as data
-#import data10 as data
+import checks
+import data
 import output
 
 # Set options for behaviour of Decimal function
 getcontext().prec = 3
-#getcontext().rounding = ROUND_05UP
-
 
 #global Technique        
         
@@ -50,22 +44,8 @@ class Application(Tkinter.Tk):
         filemenu.add_separator()
         filemenu.add_command(label="Exit", command=self.quit)
         menubar.add_cascade(label="Plans", menu=filemenu)
-        
-        # create more pulldown menus
-        #editmenu = Menu(menubar, tearoff=0)
-        #editmenu.add_command(label="Cut")#, command=hello)
-        #editmenu.add_command(label="Copy")#, command=hello)
-        #editmenu.add_command(label="Paste")#, command=hello)
-        #menubar.add_cascade(label="Edit")#, menu=editmenu)
-        
-        #helpmenu = Menu(menubar, tearoff=0)
-        #helpmenu.add_command(label="About")#, command=hello)
-        #menubar.add_cascade(label="Help")#, menu=helpmenu)
-        ##menubar.add_command(label="Hello!", command=hello)
-        ##menubar.add_command(label="Quit!", command=self.quit)
-        
+              
         self.config(menu=menubar)       
-
        
         # Create Status bar
         # Group  in a LabelFrame
@@ -74,19 +54,11 @@ class Application(Tkinter.Tk):
         self.label = Tkinter.Label(statusLogFrame,textvariable=self.labelVariable,padx=400,pady=5,bg="light cyan",fg="black")
         
         resultsGroup = LabelFrame(self, text="Results", labelanchor="n",font='helvetica 12')
-
-
-        #status = Tkinter.Label(resultsGroup, text="Status").grid(in_=resultsGroup,row=3,column=0, sticky=W)
-        #self.labelVariable = Tkinter.StringVar()
-        #self.label = Tkinter.Label(resultsGroup,textvariable=self.labelVariable,
-                                #fg="white",bg="light cyan").grid(in_=resultsGroup,row=3,column=1, sticky=W)
-        
+       
         self.grid_columnconfigure(0,weight=1)
         self.resizable(True,True)
       
         # Create LabelFrame for  log
-        #status = Tkinter.Label(resultsGroup, text="PASSED",font ='helvetica 12').grid(in_=resultsGroup,row=1,column=1, sticky=EW)
-
         passLogframe = LabelFrame(resultsGroup, text=" Passed Parameters", labelanchor="n", font ='helvetica 12',bd=0)
         passLogframe.grid(in_=resultsGroup,row=3,column=0, sticky=W)
         yscrollbar = Tkinter.Scrollbar(passLogframe)
@@ -106,14 +78,7 @@ class Application(Tkinter.Tk):
         yscrollbar2.config(command=self.failLog.yview)
         xscrollbar2.config(command=self.failLog.xview)
         
-        # Create FAIL log
-        #self.failLog = Tkinter.Text(failLogframe,state='disabled', width=57, height=20, wrap='none', foreground="red",background="light cyan",yscrollcommand=yscrollbar.set,xscrollcommand=xscrollbar.set)
-        #yscrollbar.config(command=self.passLog.yview)
-        #xscrollbar.config(command=self.passLog.xview)
-
-        
         # Define font and colour settings for logs
-        #self.passLog.tag_config("PASS", background="forest green",foreground="black")
         self.passLog.tag_config("PASS", foreground="forest green")
         self.passLog.tag_config("MLCPASS", foreground="forest green",font='helvetica 8')
         self.passLog.tag_config("MLCFAIL", background="red",font='helvetica 8',foreground='white')
@@ -152,12 +117,7 @@ class Application(Tkinter.Tk):
         _OTPBeams = Tkinter.Label(OTPgroup, text="Beams",padx=10).grid(in_=OTPgroup, row=4,column=0,sticky="NW")
         self.OTPlog = Tkinter.Text(OTPgroup, state='disabled',width=25, height=10, wrap='none', foreground="red",bg="light cyan",relief=GROOVE)       
         self.OTPlog.tag_config("PASS", foreground="black")
-        #OTPlog.tag_config("FAIL", foreground="red")
-        #OTPlog.tag_config("INFO", foreground="black")
-        #OTPlog.tag_config('Heading', foreground="darkgreen",font='helvetica 10 bold', relief='raised')
-        #self.OTPlog = Tkinter.Text(self, state='disabled',width=50, height=15, wrap='none', foreground="red")
- 
-    
+
         # Group Lantis plan details in a LabelFrame
         Lgroup = LabelFrame(self, text="Lantis Plan", labelanchor="n",font='helvetica 10')
         
@@ -177,11 +137,7 @@ class Application(Tkinter.Tk):
  
         self.RTPlog = Tkinter.Text(Lgroup,state='disabled', width=25, height=10, wrap='none', foreground="red",bg='light cyan',relief=GROOVE)
         self.RTPlog.tag_config("PASS", foreground="black")
-        #self.RTPlog.tag_config("FAIL", foreground="red")
-        #self.RTPlog.tag_config("INFO", foreground="black")
-        #self.RTPlog.tag_config('Heading',foreground="darkgreen",font='helvetica 10 bold', relief='raised')
-
-       
+        
         # Buttons
         OTPloadBtn_CRT = Tkinter.Button(OTPgroup,text=u"Load CRT",
                                 command=lambda: self.OnOTPloadBtnClick("CRT"),width=10).grid(in_=OTPgroup,row=4,column=0,sticky="EW",padx=5)
@@ -249,7 +205,6 @@ class Application(Tkinter.Tk):
         # Reset info label
         self.label.config(bg='light cyan',fg='black')            
         self.labelVariable.set("Loading OTP Plan")
-        #output.write("Loading OTP Plan","INFO",self.passLog)  
         # Create OTP plan object
         self.OTPPlan = data.Plan()
         
