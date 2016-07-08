@@ -40,3 +40,6 @@ Plans are constructed from both the Lantis and Oncentra data and then compared p
 - SSD
 - Position of Y Jaws
 - Positions of each MLC pair
+
+### Output
+![Alt text](docs/plancheck_screenshot3.JPG?raw=true "Title")
