@@ -1,8 +1,10 @@
 # PlanCheck
 ## Introduction
-PlanCheck is a desktop application designed to assist in verifying radiotherapy treatment plans as part of the Physics plan check process. The project was developed in the Radiotherapy Department at University Hospital Galway during the National Radiation Oncology Physics Residency Programme.
+PlanCheck is a python desktop application designed to assist in verifying radiotherapy treatment plans as part of the Physics plan check process. The project was developed in the Radiotherapy Department at University Hospital Galway during the National Radiation Oncology Physics Residency Programme.
 
-The Physics Plan Check process includes verifying that the treatment plan has been transferred correctly from the planning system to the Oncology Information Management System which delivers the treatment parameters to the linac. This application is designed to help automate this process by parsing the treatment data in DICOM and RTP format from the two systems and verifying that the parameters match. It was designed to support the data structures produced by the Oncentra Master Plan planning system and the Siemens LANTIS Oncology Information Management System, but could easily be extended to support other systems.
+The Physics Plan Check process includes verifying that the treatment plan has been transferred correctly from the planning system to the Oncology Information Management System which delivers the treatment parameters to the linac. This application is designed to help automate this process by parsing the treatment data in DICOM and RTP format from the two systems and verifying that the parameters match. Both conformal and IMRT plans are supported. It was designed to support the data structures produced by the Oncentra Master Plan planning system and the Siemens LANTIS Oncology Information Management System, but could easily be extended to support other systems.
+
+As well as assisting in the plan check process, this project also provided an opportunity to learn python and dip my feet into the world of object-oriented programming. 
 
 ## Requirements
 - [Python 2](https://www.python.org/)
@@ -41,5 +43,10 @@ Plans are constructed from both the Lantis and Oncentra data and then compared p
 - Position of Y Jaws
 - Positions of each MLC pair
 
-### Output
-![Alt text](docs/plancheck_screenshot3.JPG?raw=true "Title")
+### Example
+In the example below, three of the beams were renamed in Lantis and are showing up as mismatched parametes. All other parameters match.
+![PlanCheck Screenshot](docs/plancheck_screenshot3.JPG?raw=true "PlanCheck Screenshot")
+
+
+## Disclaimer
+This application is a support tool to aid in plan checking and is not a substitute for plan checking by a trained professional. Responsibility for all aspects of the plan check process rests with the staff member carrying out the checks.
