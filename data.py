@@ -16,22 +16,11 @@ import pdb
 import output
 
 # TESTING
-#global Technique 
 global OTPfile
 global RTPfile
 
-#type = "IMRT"
-#OTPfile = "P:/Trainee Med Phys/John/plancheck/plans/test.dcm"
-#RTPfile = "P:/Trainee Med Phys/John/plancheck/plans/test.rtp"
-
-#type = "CRT"
-#OTPfile = "P:/Trainee Med Phys/John/plancheck/plans/test3.dcm"
-#RTPfile = "P:/Trainee Med Phys/John/plancheck/plans/test3_edit.rtp"
-
-
 class Plan:
     '''Imports and stores plan data.'''
-
    
     def __init__(self):
         self.Beams = []
@@ -175,9 +164,7 @@ class Plan:
 					
 					if ((row[0] == "RX_DEF") and (prescriptions.__contains__(row[2]))):
 						self.Prescription = RTPPrescription(row)
-						
-						#Rx = RTPPrescription(row)
-							#self.Prescriptions.append(Rx)								   
+					   
 
 			self.NumBeams = beam_index + 1   
 			
@@ -201,11 +188,7 @@ class Plan:
         options['defaultextension'] = '.RTP' 
         options['filetypes'] = [('Lantis RTP','*.RTP'),('all files', '.*')]          
         options['title'] = 'Select RTP file from Lantis'
-        #options['initialdir'] = '..\plans'        
-        options['initialdir'] = 'L:\\NONIMAGE'
-        #options['initialfile'] = 'myfile.txt'
-        #options['parent'] = root        
-                
+        options['initialdir'] = 'L:\\NONIMAGE'                
       
         RTPfile = self.askopenfilename()
 
@@ -224,12 +207,8 @@ class Plan:
                         log.config(state=NORMAL)
                         log.delete(1.0, END)
                         log.config(state=DISABLED)
-
-                        #message = "Patient:%s\nID:      %s" % (self.PatientsName,self.PatientID)
-                        #output.write(message,"Heading",log)
                         
                     if row[0] == "RX_DEF":
-                        #Rx = RTPPrescription(row)
                         prescriptions.append(str(row[2]))
                 
                 # Create window for Prescription selection

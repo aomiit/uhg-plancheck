@@ -20,7 +20,6 @@ import output
 # Set options for behaviour of Decimal function
 getcontext().prec = 3
 
-#global Technique        
         
 # Create GUI control for application
 class Application(Tkinter.Tk):
